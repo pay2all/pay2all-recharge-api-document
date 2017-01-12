@@ -42,7 +42,7 @@ curl_close($ch);
 
 //capture the response from pay2all api
 //splitting each data as single
-$maindata = json_decode($file_contents);
+$maindata = json_decode($file_contents, true);
 
 $transactionid = $maindata['operator_ref'];
 $status = $maindata['status']; 

@@ -21,28 +21,40 @@ if(empty($amount)){
 echo"enter amount";
 exit;
 }
-//end of data input checking
 
 
-//common settings
-$api_token = ""; //your pay2all api token
+
+        $parameters = array(
+            'number' => $number,
+            'provider_id' => $provider_id,
+            'amount' => $amount,
+            'vendor_id' => 1,
+        );
+
+        $key = "Personal Access Tokens";
+
+        $header = ["Accept:application/json", "Authorization:Bearer ".$key];
+
+        $method = 'POST';
 
 
-//doing recharge now by hitting pay2all api
-$ch = curl_init();
-$timeout = 60; // set to zero for no timeout
-$myurl = "https://www.pay2all.in/web-api/paynow?api_token=$api_token&provider_id=$provider_id&number=$number&amount=$amount";
-curl_setopt ($ch, CURLOPT_URL, $myurl);
-curl_setopt ($ch, CURLOPT_HEADER, 0);
-curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-$file_contents = curl_exec($ch);
-curl_close($ch);
-//echo"$file_contents";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, 1);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $response = curl_exec($ch);
+        echo $response;  [JSON RESPONSE]
 
-//capture the response from pay2all api
-//splitting each data as single
-$maindata = json_decode($file_contents);
+
+$maindata = json_decode($response);
 
 $transactionid = $maindata['operator_ref'];
 $status = $maindata['status']; 

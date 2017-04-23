@@ -37,6 +37,8 @@ exit;
 
         $method = 'POST';
 
+        $url = "https://www.pay2all.in/api/v1/transaction";
+
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);

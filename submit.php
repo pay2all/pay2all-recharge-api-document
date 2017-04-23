@@ -56,17 +56,4 @@ exit;
         echo $response;  //[JSON RESPONSE]
 
 
-$maindata = json_decode($response);
-
-$transactionid = $maindata['operator_ref'];
-$status = $maindata['status']; 
-$payid = $maindata['payid']; //pay2all order id
-
-//display the result to customer
-echo"Transaction ID: $transactionid (This is Operator reference ID)";
-echo"<br/>";
-echo"Recharge Status: $status";
-echo"<br/>";
-
-
 ?>

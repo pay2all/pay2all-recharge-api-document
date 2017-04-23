@@ -51,7 +51,7 @@ exit;
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_URL, $url);
         $response = curl_exec($ch);
-        echo $response;  [JSON RESPONSE]
+        echo $response;  //[JSON RESPONSE]
 
 
 $maindata = json_decode($response);

@@ -29,19 +29,7 @@ $client_id = "09919190"; //(your system unique id. that you can check in pay2all
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($ch);
         curl_close($ch);
-
-
-$maindata = json_decode($response);
-
-$transactionid = $maindata['operator_ref'];
-$status = $maindata['status']; 
-$payid = $maindata['payid']; //pay2all order id
-
-//display the result to customer
-echo"Transaction ID: $transactionid (This is Operator reference ID)";
-echo"<br/>";
-echo"Recharge Status: $status";
-echo"<br/>";
+        echo $response;
 
 
 ?>

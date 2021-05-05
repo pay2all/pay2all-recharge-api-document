@@ -25,7 +25,7 @@ $client_id = "09919190"; //(your system unique id. that you can check in pay2all
 
 
         $parameters = array(
-                'number' => $mobile_number,
+                'number' => $number,
                 'provider_id' => $provider_id // Provider id check in pay2all
                 'amount' => $amount, // Recharge or payment Amount
                 'client_id' => $client_id // your system unique id

@@ -35,11 +35,11 @@ $client_id = "09919190"; //(your system unique id. that you can check in pay2all
                 'optional4' => ''
         );
 
-        $key = ""; //you have to add personal access token 
+        $access_token = ""; //you have to add personal access token 
 
     
 
-        $header = ["Accept:application/json", "Authorization:Bearer ".$key];
+        $header = ["Accept:application/json", "Authorization:Bearer ".$access_token];
 
         $method = 'POST';
 
